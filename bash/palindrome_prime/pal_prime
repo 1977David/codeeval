@@ -1,0 +1,32 @@
+#!/bin/bash
+#set -x
+prime=()
+palin_prime=()
+is_prime() {
+	t=2
+	while [ $t -lt "$1" ]; do
+		if (( $1 % t == 0 )); then
+			return
+		fi
+	t=$((t+1))
+	done
+	prime+=($1)
+}
+
+for (( i=1; i<=1000; i++)); do
+	is_prime $i
+done
+
+# echo "${prime[@]}"
+
+for l in "${!prime[@]}"; do
+	a=${prime[l]}
+	b=$(echo "${prime[l]}" | rev)
+	if (( a == b )); then
+		palin_prime+=($a)
+	fi
+done
+
+echo "${palin_prime[-1]}"
+
+
