@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# start reading from text file given as an argument
 while read -ra line; do
 	a=${line[0]}
 	b=${line[1]}
